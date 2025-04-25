@@ -1,0 +1,114 @@
+<!DOCTYPE html> 
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Browser Environment Dashboard</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 20px;
+      transition: background-color 0.3s ease;
+    }
+    header, section {
+      margin-bottom: 20px;
+      padding: 15px;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      background: #f9f9f9;
+    }
+    header {
+      background: #ddd;
+    }
+    h2 {
+      margin-top: 0;
+    }
+    button {
+      margin-right: 10px;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h2>Student Profile</h2>
+    <p><strong>Complete Name:</strong> Kaicer R. Adayo</p>
+    <p><strong>Sex:</strong> Male</p>
+    <p><strong>Address:</strong> San Francisco, Tigaon, Camarines sur</p>
+    <p><strong>Course, Year, and Section:</strong> BSIT 2A</p>
+    <p><strong>Name of School:</strong> Partido State University</p>
+    <p><strong>Semester and Academic Year:</strong> 2nd Semester, AY 2024–2025</p>
+    <p><strong>Subject Code and Title:</strong> PF2 Event Driven Programming</p>
+    <p><strong>Name of Subject Instructor:</strong> Arjay Abio</p>
+  </header>
+
+  <section>
+    <h2>Browser Information</h2>
+    <p><strong>Browser:</strong> <span id="browser"></span></p>
+    <p><strong>Platform:</strong> <span id="platform"></span></p>
+    <p><strong>Java Enabled:</strong> <span id="java"></span></p>
+    <p><strong>Screen Resolution:</strong> <span id="resolution"></span></p>
+    <p><strong>Available Screen Size:</strong> <span id="availScreen"></span></p>
+    <p><strong>Color Depth:</strong> <span id="colorDepth"></span></p>
+  </section>
+
+  <section>
+    <h2>Page Information and Controls</h2>
+    <p><strong>Current URL:</strong> <span id="url"></span></p>
+    <p><strong>Hostname:</strong> <span id="hostname"></span></p>
+    <p><strong>Page Title:</strong> <span id="pageTitle"></span></p>
+    <button onclick="changeTitle()">Change Page Title</button>
+  </section>
+
+  <section>
+    <h2>Navigation Controls</h2>
+    <button onclick="location.reload()">Reload Page</button>
+    <button onclick="location.href='https://www.example.com'">Go to Example.com</button>
+    <button onclick="history.back()">Go Back</button>
+    <button onclick="history.forward()">Go Forward</button>
+  </section>
+
+  <script>
+    // Display browser and screen info
+    document.getElementById("browser").textContent = navigator.userAgent;
+    document.getElementById("platform").textContent = navigator.platform;
+    document.getElementById("java").textContent = navigator.javaEnabled() ? "Yes" : "No";
+    document.getElementById("resolution").textContent = screen.width + " x " + screen.height;
+    document.getElementById("availScreen").textContent = screen.availWidth + " x " + screen.availHeight;
+    document.getElementById("colorDepth").textContent = screen.colorDepth + " bits";
+
+    // Display page info
+    document.getElementById("url").textContent = location.href;
+    document.getElementById("hostname").textContent = location.hostname;
+    document.getElementById("pageTitle").textContent = document.title;
+
+    // Change page title function
+    function changeTitle() {
+      const newTitle = prompt("Enter new page title:");
+      if (newTitle) {
+        document.title = newTitle;
+        document.getElementById("pageTitle").textContent = newTitle;
+      }
+    }
+
+    // Change background color based on screen width
+    function updateBackgroundColor() {
+      const width = window.innerWidth;
+      if (width < 600) {
+        document.body.style.backgroundColor = "blue";
+      } else if (width >= 600 && width <= 991) {
+        document.body.style.backgroundColor = "green";
+      } else {
+        document.body.style.backgroundColor = "orange";
+      }
+    }
+
+    window.addEventListener("load", updateBackgroundColor);
+    window.addEventListener("resize", updateBackgroundColor);
+  </script>
+
+</body>
+</html>
+
+
+                                                                         
